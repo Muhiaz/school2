@@ -1,0 +1,116 @@
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+                <a href="#"><span></span><span><img style="width:90px;height:60px;margin:auto 10px;" src="/Images/schoolmet_icon-bg.png"></span><span style="color:yellow">Schoolmet</span></a>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li class="active">
+                    <a href="#"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
+                </li>
+                <% if( user.level == 'Secondary' ){ %>
+
+                <li>
+                    <a href="/form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
+                </li>
+                <li>
+                    <a href="#"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 2</span></a>
+                </li>
+                <li>
+                    <a href="#"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 3</span></a>
+                </li>
+                <li>
+                    <a href="#"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
+                </li>
+                <% } else{ %>
+                 <li>
+                    <a href="grade1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 1</span></a>
+                </li>
+                <li>
+                    <a href="grade2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 2</span></a>
+                </li>
+                <li>
+                    <a href="grade3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 3</span></a>
+                </li>
+                <li>
+                    <a href="grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
+                </li>
+                <li>
+                    <a href="class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
+                </li>
+                <li>
+                    <a href="class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
+                </li>
+                <li>
+                    <a href="class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
+                </li>
+                <li>
+                    <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
+                </li>
+                <% } %>
+                <li>
+                    <a href="online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
+                </li>
+                <li>
+                    <a href="accounts"><span><i class="nav-icon fas fas fa fa-tags"></i></span><span>My Payments</span></a>
+                </li>
+                <li>
+                    <a href="facebook"><span><i class="nav-icon fas fa fa-file"></i></span><span>Share on Facebook</span></a>
+                </li>
+                <li>
+                    <a href="youtube"><span><i class="nav-icon fas fa fa-truck"></i></span><span>Share on Youtube</span></a>
+                </li>
+                <li>
+                    <a href="profile"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Profile</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="header-content">
+        <div class="bars">
+            <div>
+            
+            </div>
+            <label for="nav-toggle">
+
+<h3><i class="nav-icon fas fas fa fa-bars"></i></h3>
+</label>
+        </div>
+        <div class="input">
+            <input type="text" placeholder="Search her...">
+            <span></span>
+        </div>
+        <div class="profile">
+            <img src="">
+            <H5><p> Welcome <%= user.name %></p></H5>
+            <p><a href="/users/logout">Log out</a></p>
+        </div>
+        </div>
+        </header>
+        <main>
+       <div class="profilezz">
+       <div class="profile-header">
+       <h2><span><i class="fa fa-user"></i> My Profile</span></h2>
+       </div>
+       <div class="profile-body">
+       <div class="row">
+       <div class="col-md-6">
+       <div class="profile-pic">
+       <i class="fa fa-user" style=""></i>
+       </div>
+       </div>
+       <div class="col-md-6">
+
+       <p>Name: <%= user.name %></p>
+       <p>Email: <%= user.email %></p>
+       <p>Level: <%= user.level %></p>
+       <p>County: <%= user.county %></p>
+       </div>
+       </div>
+       </div>
+       </div>
+        </main>
+    </div>

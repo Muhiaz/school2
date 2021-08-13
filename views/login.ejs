@@ -1,0 +1,37 @@
+<div class="page_body">
+<div class="form">
+<div class="form_header">
+<h1> Login </h1>
+</div>
+<%- include ('./partials/messages') %>
+<div class="row">
+<div class="col-md-6">
+<img src="/Images/child.jpg">
+</div>
+<div class="col-md-6">
+<form action="/users/login" method="POST">
+<div>
+<label for="email">Email</label>
+<input class="form-control"
+type="email"
+name="email"
+placeholder="Enter Email"
+/>
+</div>
+<div>
+    <label for="password">Password</label>
+    <input class="form-control"
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+    />
+  
+</div>
+<br>
+<button type="submit" class="btn btn-primary btn-block">Login</button>
+   
+</form>
+</div>
+</div>
+</div>
+</div>
