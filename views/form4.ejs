@@ -73,7 +73,7 @@
     <h3 style="text-align:center;margin:auto">Form 4 resources</h3>
     </div>
     <div class="col-md-3">
-    <button class="btn btn-primary">Add Resource</button>
+    <button class="btn btn-primary" id="add-resource">Add Resource</button>
     </div>
     <div class="col-md-3">
     <button class="btn btn-warning">Edit Resource</button>
@@ -193,5 +193,74 @@
                     </div>
                 </div>
             </div>
+            <div class="form-modal" id="add-resource-modal">
+             <div class="mymodal-content">
+             <i class="fa fa-times closemodal" id="closemodal"></i>
+             <div class="mymodal-header">Add Form 4 Resource</div>
+             <hr style width="100%;background-color:#000;color:#000;">
+             <div class="mymodal-body">
+             <form>
+             <div class="form-group">
+             <label>Resource name</label>
+             <input type="text" class="form-control">
+             </div>
+             <div class="row">
+             <div class="col-md-12">
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Level</label>
+             <select type="text" class="form-control">
+             <option>Primary</option>
+             <option>Secondary</option>
+             </select>
+             </div>
+             </div>
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Class</label>
+              <select type="text" class="form-control">
+             <option></option>
+             <option>Grade 1</option>
+             <option>Grade 2</option>
+              <option>Grade 3</option>
+               <option>Grade 4</option>
+                <option>Class 5</option>
+                 <option>Class 6</option>
+                  <option>Class 7</option>
+                   <option>Class 8</option>
+                   <option>Form 1</option>
+                   <option>Form 2</option>
+                   <option>Form 3</option>
+                   <option>Form 4</option>
+             </select>
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="form-group">
+             <label>Description</label>
+             <textarea type="text" class="form-control">
+             </textarea>
+             </div>
+             <div class="form-group">
+             <label>File</label>
+             <input type="file" class="form-control">
+             </div>
+             </form>
+             </div>
+             
+             <div class="mymodal-footer">
+             <div class="row">
+             <div class="col-md-12">
+             <hr class="footerpartition">
+             <div class="col-md-12">
+             <button class="btn btn-default" id="closemodalbtn">Close</button>
+             <button class="btn btn-primary">Save</button>
+             </div>
+             </div>
+             </div>
+             </div>
+             </div>
+             </div>
         </main>
     </div>
