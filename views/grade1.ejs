@@ -1,16 +1,39 @@
 
     <input type="checkbox" id="nav-toggle">
-    <div class="sidebar">
+    <div class="sidebar" style="max-height:100vh;scrollable:true;">
         <div class="sidebar-brand">
                 <a href="#"><span></span><span><img style="width:90px;height:60px;margin:auto 10px;" src="/Images/schoolmet_icon-bg.png"></span><span style="color:yellow">Schoolmet</span></a>
         </div>
         <div class="sidebar-menu">
-            <ul>
+             <ul>
                 <li class="active">
-                    <a href="#"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
+                    <a href="dashboard"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
                 </li>
-                <% if( user.level == 'Secondary' ){ %>
-
+                <% if( user.role == 'admin' ){ %>
+                <li>
+                    <a href="grade1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 1</span></a>
+                </li>
+                <li>
+                    <a href="grade2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 2</span></a>
+                </li>
+                <li>
+                    <a href="grade3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 3</span></a>
+                </li>
+                <li>
+                    <a href="grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
+                </li>
+                <li>
+                    <a href="class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
+                </li>
+                <li>
+                    <a href="class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
+                </li>
+                <li>
+                    <a href="class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
+                </li>
+                <li>
+                    <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
+                </li>
                 <li>
                     <a href="form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
                 </li>
@@ -23,7 +46,7 @@
                 <li>
                     <a href="form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
                 </li>
-                <% } else{ %>
+                <% } else if(user.level == 'Primary'){ %>
                  <li>
                     <a href="grade1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 1</span></a>
                 </li>
@@ -48,8 +71,8 @@
                 <li>
                     <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
                 </li>
-                <% } %>
-                <li>
+                 <% } %>
+                 <li>
                     <a href="online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
                 </li>
                 <li>
@@ -92,10 +115,11 @@
         </div>
         </header>
         <main>
-         <div class="row" style="margin:20px auto;">
-    <div class="col-md-4">
+         <div class="col-md-12" style="margin:20px auto;">
     <h3 style="text-align:center;margin:auto">Grade 1 resources</h3>
-    </div>
+    </div><br>
+         <div class="row" style="margin:50px auto;">
+    <% if( user.role == 'admin'){ %>
     <div class="col-md-3">
     <button class="btn btn-primary" id="add-resource">Add Resource</button>
     </div>
@@ -103,8 +127,9 @@
     <button class="btn btn-warning">Edit Resource</button>
     </div>
     </div>
+    <% } %>
             <div class="cards">
-                <div class="single-card">
+                <a href="pmaths"><div class="single-card">
                     <div>
                     <h4>Maths</h4>
                     <h5>Resources</h5>
@@ -113,7 +138,8 @@
                     <span><img style="height:70px;width:70px;" src="/Images/maths icon golden.png"></span>
                     </div>
                 </div>
-                <div class="single-card">
+                </a>
+                <a href="penglish"><div class="single-card">
                     <div>
                     <h4>English</h4>
                     <h5>Resources</h5>
@@ -121,7 +147,8 @@
                     <div>
                     <span><img style="height:70px;width:70px;" src="/Images/Englishi icon golden.png"></span>
                     </div>
-                </div>
+                </div></a>
+                <a href="pkiswahili">
                 <div class="single-card">
                     <div>
                     <h4>Kiswahili</h4>
@@ -130,7 +157,8 @@
                     <div>
                     <span><img style="height:70px;width:70px;" src="/Images/kiswahili icon golden.png"></span>
                     </div>
-                </div>
+                </div></a>
+                <a href="pcre">
                 <div class="single-card">
                     <div>
                     <h4>CRE</h4>
@@ -140,8 +168,9 @@
                     <span><img style="height:70px;width:70px;" src="/Images/cre icon golden.png"></span>
                     </div>
                 </div>
-            </div>
+            </div></a>
              <div class="cards">
+             <a href="science">
                 <div class="single-card">
                     <div>
                     <h4>Science</h4>
@@ -153,23 +182,24 @@
                 </div>
                 
             </div>
+            </a>
              <div class="form-modal" id="add-resource-modal">
              <div class="mymodal-content">
              <i class="fa fa-times closemodal" id="closemodal"></i>
              <div class="mymodal-header">Add Grade 1 Resource</div>
              <hr style width="100%;background-color:#000;color:#000;">
              <div class="mymodal-body">
-             <form>
+            <form action="/addresource" method="POST">
              <div class="form-group">
              <label>Resource name</label>
-             <input type="text" class="form-control">
+             <input type="text" class="form-control" name="name">
              </div>
              <div class="row">
              <div class="col-md-12">
              <div class="col-md-6">
              <div class="form-group">
              <label>Level</label>
-             <select type="text" class="form-control">
+             <select type="text" class="form-control" name="level">
              <option>Primary</option>
              <option>Secondary</option>
              </select>
@@ -178,9 +208,9 @@
              <div class="col-md-6">
              <div class="form-group">
              <label>Class</label>
-             <select type="text" class="form-control">
+             <select type="text" class="form-control" name="rclass">
              <option></option>
-             <option>Grade 1</option>
+                   <option>Grade 1</option>
              <option>Grade 2</option>
               <option>Grade 3</option>
                <option>Grade 4</option>
@@ -188,10 +218,19 @@
                  <option>Class 6</option>
                   <option>Class 7</option>
                    <option>Class 8</option>
-                   <option>Form 1</option>
-                   <option>Form 2</option>
-                   <option>Form 3</option>
-                   <option>Form 4</option>
+             </select>
+             </div>
+             </div>
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Subject</label>
+             <select type="text" class="form-control" name="subject">
+             <option></option>
+             <option>Maths</option>
+             <option>English</option>
+              <option>Kiswahili</option>
+               <option>Science</option>
+               <option>Social</option>
              </select>
              </div>
              </div>
@@ -199,23 +238,22 @@
              </div>
              <div class="form-group">
              <label>Description</label>
-             <textarea type="text" class="form-control">
+             <textarea type="text" class="form-control" name="description" required="true">
              </textarea>
              </div>
-             <div class="form-group">
+             <div class="form-group" name="file">
              <label>File</label>
              <input type="file" class="form-control">
              </div>
-             </form>
              </div>
-             
              <div class="mymodal-footer">
              <div class="row">
              <div class="col-md-12">
              <hr class="footerpartition">
              <div class="col-md-12">
              <button class="btn btn-default" id="closemodalbtn">Close</button>
-             <button class="btn btn-primary">Save</button>
+             <button type="submit" class="btn btn-primary">Save</button>
+             </form>
              </div>
              </div>
              </div>

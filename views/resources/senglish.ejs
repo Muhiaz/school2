@@ -46,19 +46,6 @@
                 <li>
                     <a href="form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
                 </li>
-                <% } else if(user.level == 'Secondary'){ %>
-                <li>
-                    <a href="form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
-                </li>
-                <li>
-                    <a href="form2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 2</span></a>
-                </li>
-                <li>
-                    <a href="form3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 3</span></a>
-                </li>
-                <li>
-                    <a href="form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
-                </li>
                 <% } else if(user.level == 'Primary'){ %>
                  <li>
                     <a href="grade1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 1</span></a>
@@ -84,7 +71,7 @@
                 <li>
                     <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
                 </li>
-                  <% } %>
+                 <% } %>
                  <li>
                     <a href="online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
                 </li>
@@ -104,6 +91,7 @@
         </div>
     </div>
     <div class="main-content">
+
         <header>
             <div class="header-content">
         <div class="bars">
@@ -127,26 +115,118 @@
         </div>
         </header>
         <main>
-       <div class="profilezz">
-       <div class="profile-header">
-       <h2><span><i class="fa fa-user"></i> My Profile</span></h2>
-       </div>
-       <div class="profile-body">
-       <div class="row">
-       <div class="col-md-6">
-       <div class="profile-pic">
-       <i class="fa fa-user" style=""></i>
-       </div>
-       </div>
-       <div class="col-md-6">
-
-       <p>Name: <%= user.name %></p>
-       <p>Email: <%= user.email %></p>
-       <p>Level: <%= user.level %></p>
-       <p>County: <%= user.county %></p>
-       </div>
-       </div>
-       </div>
-       </div>
+          <div class="col-md-12" style="margin:20px auto;">
+    <h3 style="text-align:center;margin:auto">English resources</h3>
+    </div><br>
+         <div class="row" style="margin:50px auto;">
+    <% if( user.role == 'admin'){ %>
+    <div class="col-md-3">
+    <button class="btn btn-primary" id="add-resource">Add Resource</button>
+    </div>
+    <div class="col-md-3">
+    <button class="btn btn-warning">Edit Resource</button>
+    </div>
+    </div>
+    <% } %>
+           <table class="table table-bordered">
+            <thead style="background-color:yellow;">
+            <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i=0; i<resources.length; i++){ 
+            if(resources[i].subject == 'English' && resources[i].level == 'Secondary'){%>
+            <tr>
+            <td><%= resources[i].name %></td>
+            <td><%= resources[i].description %></td>
+            <td><%= resources[i].level %></td>
+            <td><%= resources[i].subject %></td>
+            <td><button style="background-color:blue;padding:5px">View</button></td>
+            </tr>
+            <% }} %>
+            </tbody>
+            </table>
+            <div class="form-modal" id="add-resource-modal">
+             <div class="mymodal-content">
+             <i class="fa fa-times closemodal" id="closemodal"></i>
+             <div class="mymodal-header">Add Class 6 Resource</div>
+             <hr style width="100%;background-color:#000;color:#000;">
+             <div class="mymodal-body">
+             <form action="/addresource" method="POST">
+             <div class="form-group">
+             <label>Resource name</label>
+             <input type="text" class="form-control" name="name">
+             </div>
+             <div class="row">
+             <div class="col-md-12">
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Level</label>
+             <select type="text" class="form-control" name="level">
+             <option>Primary</option>
+             <option>Secondary</option>
+             </select>
+             </div>
+             </div>
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Class</label>
+             <select type="text" class="form-control" name="rclass">
+             <option></option>
+                   <option>Grade 1</option>
+             <option>Grade 2</option>
+              <option>Grade 3</option>
+               <option>Grade 4</option>
+                <option>Class 5</option>
+                 <option>Class 6</option>
+                  <option>Class 7</option>
+                   <option>Class 8</option>
+             </select>
+             </div>
+             </div>
+             <div class="col-md-6">
+             <div class="form-group">
+             <label>Subject</label>
+             <select type="text" class="form-control" name="subject">
+             <option></option>
+             <option>Maths</option>
+             <option>English</option>
+              <option>Kiswahili</option>
+               <option>Science</option>
+               <option>Social</option>
+             </select>
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="form-group">
+             <label>Description</label>
+             <textarea type="text" class="form-control" name="description" required="true">
+             </textarea>
+             </div>
+             <div class="form-group" name="file">
+             <label>File</label>
+             <input type="file" class="form-control">
+             </div>
+             </div>
+             <div class="mymodal-footer">
+             <div class="row">
+             <div class="col-md-12">
+             <hr class="footerpartition">
+             <div class="col-md-12">
+             <button class="btn btn-default" id="closemodalbtn">Close</button>
+             <button type="submit" class="btn btn-primary">Save</button>
+             </form>
+             </div>
+             </div>
+             </div>
+             </div>
+             </div>
+             </div> 
         </main>
     </div>

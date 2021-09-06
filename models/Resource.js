@@ -1,26 +1,23 @@
 const mongoose = require('mongoose');
-const UserSchema  = new mongoose.Schema({
+
+const ResourceSchema  = new mongoose.Schema({
   name :{
       type  : String,
       required : true
   } ,
-  email :{
+  level :{
     type  : String,
     required : true
 } ,
- county :{
+ subject :{
     type  : String,
     required : true
 } ,
-level :{
+description :{
     type  : String,
     required : true
 } ,
-password :{
-    type  : String,
-    required : true
-} ,
-role :{
+rclass :{
     type  : String,
     required : true
 } ,
@@ -29,6 +26,6 @@ date :{
     default : Date.now
 }
 });
-const User= mongoose.model('User',UserSchema);
+const Resource= mongoose.model('Resource',ResourceSchema);
 
-module.exports = User;
+module.exports = Resource;

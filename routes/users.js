@@ -11,11 +11,14 @@ router.get('/login',(req,res)=>{
 router.get('/register',(req,res)=>{
     res.render('register')
     })
+router.get('/adminregister', (req,res)=>{
+    res.render('adminregister');
+})
 //Register handle
 router.post('/register',(req,res)=>{
-    const {name,email, county,level,password, password2} = req.body;
+    const {name,email, county,level,role,password, password2} = req.body;
 let errors = [];
-console.log(' Name ' + name+ ' email :' + email+ ' pass:' + password);
+console.log(' Name ' + name+ ' email :' + email+ ' pass:' + password+ ' Role: ' +role);
 if(!name || !email || !password || !password2) {
     errors.push({msg : "Please fill in all fields"})
 }
@@ -35,6 +38,7 @@ res.render('register', {
     email : email,
     county : county,
     level : level,
+    role : role,
     password : password,
     password2 : password2,
      })
@@ -44,7 +48,7 @@ res.render('register', {
     console.log(user);   
     if(user) {
         errors.push({msg: 'email already registered'});
-        render(res,errors,name,email,county,level,password,password2);
+        render(res,errors,name,email,county,level,password,password2,role);
         
        } else {
         const newUser = new User({
@@ -52,6 +56,7 @@ res.render('register', {
             email : email,
             county : county,
             level : level,
+            role : role,
             password : password
         });
            //hash password
