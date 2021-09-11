@@ -465,3 +465,156 @@ animation: flowin ease-in  3s;
 	box-shadow: 0 1px 4px rgba(146,161,176,0.8);
 	border-radius: 5px;
 }
+
+.bloghome{
+	margin-top: 5rem;
+	height: auto;
+	padding-top: 5rem;
+	padding-bottom: 2rem;
+}
+.bloghome h3{
+	font-weight: bold;
+	text-align: center;
+	font-size: 4rem;
+	margin: 1rem auto 2rem auto;
+	line-height: 5rem;
+	background-color: red;
+}
+.subtitle{
+	position: relative;
+	text-align: left;
+	font-size: 3rem;
+	font-weight: bold;
+	margin-bottom: 4rem;
+	margin-top: 15px;
+}
+ .subtitle::after{
+	position: absolute;
+	content: "";
+	width: 70px;
+	height: .4rem;
+	top: 4rem;
+	left: 0;
+	margin: auto;
+	background-color: #000;
+}
+.infoimg{
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+.infoimg .col-md-6{
+	padding: 0px;
+}
+.infoimg img{
+	width: 100%;
+	border-radius: 10px;
+}
+.topline{
+	position: relative;
+	width: 100%;
+
+}
+.topline::after{
+	position: absolute;
+	content: "";
+	width: 200px;
+	top: 0rem;
+	right: 0;
+	margin: auto;
+	height: .6rem;
+	background-color: #000;
+}
+.links{
+	padding-top: 2rem;
+}
+.links h5{
+	font-weight: bold;
+}
+.content{
+	margin-top: 4rem;
+}
+.content h5{
+	font-size: 3rem;
+	font-weight: bold;
+}
+.itemscontainer{
+	width: 100%;
+	display: flex;
+}
+.item img{
+	height: 150px;
+	width: 100%;
+	object-fit: cover;
+	background-color: #000;
+}
+.item{
+	padding: 15px;
+	border-left: 1px solid #EBEF45;
+}
+.item h5{
+	font-size: 1.5rem;
+	font-weight:
+	 bold;
+}
+.item p{
+	font-size: 12px !important;
+}
+.bloghome .time{
+	font-size: 10px !important;
+	margin-top: 10px;
+}
+.time{
+	color: gray;
+}
+.blogsyllabus{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.beststudents{
+	background-color: #8bcefd;
+	height: auto;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+
+}
+.beststudents img{
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+.beststudents .col-md-3{
+	position: relative;
+	padding: 2px;
+	overflow-x: hidden;
+}
+.beststudents .col-md-3 .h5{
+position: absolute;
+bottom: 0px;
+width: 98%;
+padding: 20px;
+color: #fff;
+
+height: 20%;
+background-color: #f5d020;
+background-image: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
+}
+
+.beststudents .col-md-2{
+	position: relative;
+	padding: 2px;
+	overflow-x: hidden;
+}
+.beststudents .col-md-2 .h5{
+position: absolute;
+bottom: -10px;
+width: 98%;
+padding: 10px;
+color: #fff;
+
+height: auto;
+background-color: #f5d020;
+background-image: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
+}

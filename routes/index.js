@@ -40,6 +40,9 @@ res.render('dashboard',{
 user: req.user
 });
 })
+router.get('/blog',(req,res)=>{
+res.render('blog');
+})
 router.get('/form1',ensureAuthenticated,(req,res)=>{
 res.render('form1',{
 user: req.user

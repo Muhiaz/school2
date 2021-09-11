@@ -140,7 +140,7 @@
             </thead>
             <tbody>
             <% for(let i=0; i<resources.length; i++){ 
-            if(resources[i].subject == 'English' && resources[i].level == 'Secondary'){%>
+            if(resources[i].subject == 'English' && resources[i].level == 'Secondary' && resource[i].rclass == 'Class 5'){%>
             <tr>
             <td><%= resources[i].name %></td>
             <td><%= resources[i].description %></td>
