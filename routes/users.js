@@ -48,7 +48,7 @@ res.render('register', {
     console.log(user);   
     if(user) {
         errors.push({msg: 'email already registered'});
-        render(res,errors,name,email,county,level,password,password2,role);
+        res.render('register',{errors,name,email,password,password2})
         
        } else {
         const newUser = new User({

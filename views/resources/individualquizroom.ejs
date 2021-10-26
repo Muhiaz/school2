@@ -5,7 +5,7 @@
                 <a href="#"><span></span><span><img style="width:90px;height:60px;margin:auto 10px;" src="/Images/schoolmet_icon-bg.png"></span><span style="color:yellow">Schoolmet</span></a>
         </div>
         <div class="sidebar-menu">
-             <ul>
+          <ul>
                 <li class="active">
                     <a href="dashboard"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
                 </li>
@@ -46,9 +46,33 @@
                 <li>
                     <a href="form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
                 </li>
-                <% } else if(user.level == 'Secondary'){ %>
-                <% } %>
+                <% } else if(user.level == 'Primary'){ %>
+                 <li>
+                    <a href="grade1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 1</span></a>
+                </li>
                 <li>
+                    <a href="grade2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 2</span></a>
+                </li>
+                <li>
+                    <a href="grade3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 3</span></a>
+                </li>
+                <li>
+                    <a href="grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
+                </li>
+                <li>
+                    <a href="class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
+                </li>
+                <li>
+                    <a href="class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
+                </li>
+                <li>
+                    <a href="class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
+                </li>
+                <li>
+                    <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
+                </li>
+                 <% } %>
+                 <li>
                     <a href="online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
                 </li>
                 <li>
@@ -91,52 +115,56 @@
         </div>
         </header>
         <main>
-          <div class="row" style="margin:20px auto;">
-          <div class="col-md-4">
-    <h3 style="text-align:center;margin:auto">Chemistry resources</h3>
-    </div>
+           <div class="col-md-12" style="margin:20px auto;">
+    <h3 style="text-align:center;margin:auto">Quiz room</h3>
+    </div><br>
+         <div class="row" style="margin:50px auto;">
     <% if( user.role == 'admin'){ %>
-    <div class="col-md-3">
-    <button class="btn btn-primary" id="add-resource">Add Resource</button>
+    
     </div>
-    <div class="col-md-3">
-    <button class="btn btn-warning">Edit Resource</button>
-    </div>
-     <% } %>
-     <div class="col-md-3">
-    <a href="quizroom"><button class="btn btn-success">Quiz room</button></a>
-    </div>
-    </div>
-           <table class="table table-bordered">
-            <thead style="background-color:yellow;">
-            <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
+    <% } %>
             <% for(let i=0; i<resources.length; i++){ 
-            if(resources[i].subject == 'Chemistry' && resources[i].level == 'Secondary'){%>
-            <tr>
-            <td><%= resources[i].name %></td>
-            <td><%= resources[i].description %></td>
-            <td><button style="background-color:blue;padding:5px">View</button></td>
-            </tr>
+            if(resources[i]._id == myid){%>
+            <div class="quiz">
+            <div class="quizroomheader"></div>
+            <div class="quizroombody">
+            <%= resources[i].name %>
+            <%= resources[i].description %>
+            </div>
+            <div class="quizroomfooter">
+            <button class="btn btn-primary reply">Reply</button>
+            <a href="#replies"><button class="btn btn-warning">View replies</button></a><div>
+            <form method="POST" action="/postreply" id="quizform">
+            <textarea class="form-control" name="reply"></textarea><br>
+            <input class="form-control" name="quizid" value="<%= myid %>" type="hidden">
+            <button class="btn btn-warning">Post</button>
+            </form>
+            </div>
             <% }} %>
-            </tbody>
-            </table>
-            <div class="form-modal" id="add-resource-modal">
+            </div>
+            </div>
+            <div class="quizreplies" id="replies">
+            <div class="quizroomheader">QUIZ REPLIES</div>
+             <% for(let i=0; i<replies.length; i++){ 
+            if(replies[i].quizid == myid){%>
+            <div class="quizreply">
+            <div class="quizroombody">
+            <%= replies[i].reply %>
+            </div>
+            <div class="quizroomfooter">
+            <button class="btn btn-primary"><i class="fa fa-bookmark bookmark"></i></button>
+            <button class="btn btn-warning"><i class="fa fa-heart heart"></i></button>
+            <button class="btn btn-danger"><i class="fa fa-times times"></i></button></div>
+            </div>
+            <% }} %>
+             </div>
+             <div class="form-modal" id="add-resource-modal">
              <div class="mymodal-content">
              <i class="fa fa-times closemodal" id="closemodal"></i>
-             <div class="mymodal-header">Add Form 2 Resource</div>
+             <div class="mymodal-header">Add Class 5 Resource</div>
              <hr style width="100%;background-color:#000;color:#000;">
              <div class="mymodal-body">
-              <form action="/addresource" method="POST">
-             <div class="form-group">
-             <label>Resource name</label>
-             <input type="text" class="form-control" name="name">
-             </div>
+             <form action="/addquizroom" method="POST">
              <div class="row">
              <div class="col-md-12">
              <div class="col-md-6">
@@ -153,10 +181,14 @@
              <label>Class</label>
              <select type="text" class="form-control" name="rclass">
              <option></option>
-                   <option>Form 1</option>
-                   <option>Form 2</option>
-                   <option>Form 3</option>
-                   <option>Form 4</option>
+                   <option>Grade 1</option>
+             <option>Grade 2</option>
+              <option>Grade 3</option>
+               <option>Grade 4</option>
+                <option>Class 5</option>
+                 <option>Class 6</option>
+                  <option>Class 7</option>
+                   <option>Class 8</option>
              </select>
              </div>
              </div>
@@ -176,7 +208,7 @@
              </div>
              </div>
              <div class="form-group">
-             <label>Description</label>
+             <label>Question</label>
              <textarea type="text" class="form-control" name="description" required="true">
              </textarea>
              </div>
@@ -201,3 +233,9 @@
              </div>
         </main>
     </div>
+    <script>
+    const reply = document.querySelector('.reply');
+reply.addEventListener('click',() =>{
+    document.querySelector('#quizform').classList.toggle('active');
+});
+    </script>

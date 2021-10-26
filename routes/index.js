@@ -3,6 +3,8 @@ const router  = express.Router();
 const mongoose = require('mongoose');
 const {ensureAuthenticated} = require("../config/auth.js");
 const Resource = require("../models/Resource.js");
+const Quizroom = require("../models/Quizroom.js");
+const Quizreply = require("../models/Quizreply.js");
 const db = mongoose.connect('mongodb://localhost:27017/test',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
@@ -34,7 +36,43 @@ router.post('/addresource',(req,res)=>{
 
 
 })
+router.post('/addquizroom',(req,res)=>{
+   var newFile = new Quizroom({
+    name: req.body.name,
+    subject: req.body.subject,
+    rclass: req.body.rclass,
+    level : req.body.level,
+    description : req.body.description,
+    file : req.body.file,
 
+  });
+
+   newFile.save()
+                    .then((value)=>{
+                        console.log(value);
+                        req.flash('success_msg','You have added to the quiz room successfully!')
+                    res.redirect('/resources/quizroom');
+                    }).catch(value=> console.log(value));
+
+
+})
+
+router.post('/postreply',(req,res)=>{
+   var newFile = new Quizreply({
+    reply: req.body.reply,
+    quizid: req.body.quizid,
+
+  });
+
+   newFile.save()
+                   .then((value)=>{
+                        console.log(value);
+                        req.flash('success_msg','You have added to the quiz room successfully!')
+                    res.redirect('back');
+                    }).catch(value=> console.log(value));
+
+
+})
 router.get('/dashboard',ensureAuthenticated,(req,res)=>{
 res.render('dashboard',{
 user: req.user
@@ -67,6 +105,27 @@ router.get('/online',ensureAuthenticated,(req,res)=>{
 res.render('online',{
 user: req.user
 });
+})
+router.get('/quizroom',ensureAuthenticated,(req,res)=>{
+
+    Quizroom.find().then(result =>{
+        console.log(result);
+        res.render('resources/quizroom',{user: req.user,resources : result})
+    }).catch(error =>console.log(result));
+})
+router.get('/quizroom/:quizid',ensureAuthenticated,(req,res)=>{
+    var current_id = req.params.quizid;
+    
+    const result = Quizroom.find().then(result =>{
+        const replies = Quizreply.find().then(reply =>{
+              res.render('resources/individualquizroom',{replies:reply,user: req.user,resources : result,myid: req.params.quizid});
+        console.log(reply)
+    }).catch(error =>console.log(reply));
+    console.log(replies);
+      
+       
+    }).catch(error =>console.log(result));
+     
 })
 router.get('/facebook',ensureAuthenticated,(req,res)=>{
 res.render('facebook',{
