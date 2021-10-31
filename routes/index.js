@@ -51,7 +51,7 @@ router.post('/addquizroom',(req,res)=>{
                     .then((value)=>{
                         console.log(value);
                         req.flash('success_msg','You have added to the quiz room successfully!')
-                    res.redirect('/resources/quizroom');
+                    res.redirect('/quizroom');
                     }).catch(value=> console.log(value));
 
 
