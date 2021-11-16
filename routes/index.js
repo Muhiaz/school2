@@ -31,7 +31,7 @@ router.post('/addresource',(req,res)=>{
                     .then((value)=>{
                         console.log(value);
                         req.flash('success_msg','You have added the Resource successfully!')
-                    res.redirect('/form1');
+                    res.redirect('back');
                     }).catch(value=> console.log(value));
 
 
@@ -51,7 +51,7 @@ router.post('/addquizroom',(req,res)=>{
                     .then((value)=>{
                         console.log(value);
                         req.flash('success_msg','You have added to the quiz room successfully!')
-                    res.redirect('/quizroom');
+                    res.redirect('back');
                     }).catch(value=> console.log(value));
 
 
@@ -113,6 +113,14 @@ router.get('/quizroom',ensureAuthenticated,(req,res)=>{
         res.render('resources/quizroom',{user: req.user,resources : result})
     }).catch(error =>console.log(result));
 })
+router.get('/quizrooms/:tagId/:subject',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param('tagId');
+    var current_subject = req.param('subject');
+    Quizroom.find().then(result =>{
+        console.log(result);
+        res.render('resources/quizroom',{user: req.user,resources : result,subject : current_subject,classs : current_id})
+    }).catch(error =>console.log(result));
+})
 router.get('/quizroom/:quizid',ensureAuthenticated,(req,res)=>{
     var current_id = req.params.quizid;
     
@@ -124,6 +132,161 @@ router.get('/quizroom/:quizid',ensureAuthenticated,(req,res)=>{
     console.log(replies);
       
        
+    }).catch(error =>console.log(result));
+     
+})
+
+router.get('/pmaths/:tagId/:pmaths',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Maths";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/pmaths',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/penglish/:tagId/:penglish',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "English";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/penglish',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+
+router.get('/pkiswahili/:tagId/:pkiswahili',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Kiswahili";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/pkiswahili',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/pcre/:tagId/:pcre',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Cre";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/pcre',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/science/:tagId/:science',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Science";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/science',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/smaths/:tagId/:smaths',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Math";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/smaths',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/senglish/:tagId/:senglish',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "English";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/senglish',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/skiswahili/:tagId/:skiswahili',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Kiswahili";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/skiswahili',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/scre/:tagId/:scre',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Cre";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/scre',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/biology/:tagId/:biology',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Biology";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/biology',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/business/:tagId/:business',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Business";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/business',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/chemistry/:tagId/:chemistry',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Chemistry";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/chemistry',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/computer/:tagId/:computer',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Computer";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/computer',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/agriculture/:tagId/:agriculture',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Agriculture";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/agriculture',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/history/:tagId/:history',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "History";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/history',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/geography/:tagId/:geography',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Geography";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/geography',{user: req.user,resources : result,subject : current_subject,classs : current_id});
+    }).catch(error =>console.log(result));
+     
+})
+router.get('/physics/:tagId/:physics',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    var current_subject = "Physics";
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/physics',{user: req.user,resources : result,subject : current_subject,classs : current_id});
     }).catch(error =>console.log(result));
      
 })

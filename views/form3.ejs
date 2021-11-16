@@ -5,55 +5,83 @@
                 <a href="#"><span></span><span><img style="width:90px;height:60px;margin:auto 10px;" src="/Images/schoolmet_icon-bg.png"></span><span style="color:yellow">Schoolmet</span></a>
         </div>
         <div class="sidebar-menu">
-             <ul>
+            <ul>
                 <li class="active">
-                    <a href="dashboard"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
+                    <a href="#"><span> <i class="nav-icon fas fa-tachometer-alt"></i></span><span>Dashboard</span></a>
                 </li>
                 <% if( user.role == 'admin' ){ %>
-                
+               
                 <li>
-                    <a href="grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
+                    <a href="/grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
                 </li>
                 <li>
-                    <a href="class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
+                    <a href="/class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
                 </li>
                 <li>
-                    <a href="class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
+                    <a href="/class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
                 </li>
                 <li>
-                    <a href="class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
+                    <a href="/class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
                 </li>
                 <li>
-                    <a href="class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
+                    <a href="/class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
                 </li>
                 <li>
-                    <a href="form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
+                    <a href="/form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
                 </li>
                 <li>
-                    <a href="form2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 2</span></a>
+                    <a href="/form2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 2</span></a>
                 </li>
                 <li>
-                    <a href="form3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 3</span></a>
+                    <a href="/form3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 3</span></a>
                 </li>
                 <li>
-                    <a href="form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
+                    <a href="/form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
                 </li>
                 <% } else if(user.level == 'Secondary'){ %>
-                <% } %>
                 <li>
-                    <a href="online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
+                    <a href="/form1"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 1</span></a>
                 </li>
                 <li>
-                    <a href="accounts"><span><i class="nav-icon fas fas fa fa-tags"></i></span><span>My Payments</span></a>
+                    <a href="/form2"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 2</span></a>
                 </li>
                 <li>
-                    <a href="facebook"><span><i class="nav-icon fas fa fa-file"></i></span><span>Share on Facebook</span></a>
+                    <a href="/form3"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 3</span></a>
                 </li>
                 <li>
-                    <a href="youtube"><span><i class="nav-icon fas fa fa-truck"></i></span><span>Share on Youtube</span></a>
+                    <a href="/form4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Form 4</span></a>
+                </li>
+                <% } else if(user.level == 'Primary'){ %>
+                <li>
+                    <a href="/grade4"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Grade 4</span></a>
                 </li>
                 <li>
-                    <a href="profile"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Profile</span></a>
+                    <a href="/class5"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 5</span></a>
+                </li>
+                <li>
+                    <a href="/class6"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 6</span></a>
+                </li>
+                <li>
+                    <a href="/class7"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 7</span></a>
+                </li>
+                <li>
+                    <a href="/class8"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Class 8</span></a>
+                </li>
+                  <% } %>
+                 <li>
+                    <a href="/online"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Online Classes</span></a>
+                </li>
+                <li>
+                    <a href="/accounts"><span><i class="nav-icon fas fas fa fa-tags"></i></span><span>My Payments</span></a>
+                </li>
+                <li>
+                    <a href="/facebook"><span><i class="nav-icon fas fa fa-file"></i></span><span>Share on Facebook</span></a>
+                </li>
+                <li>
+                    <a href="/youtube"><span><i class="nav-icon fas fa fa-truck"></i></span><span>Share on Youtube</span></a>
+                </li>
+                <li>
+                    <a href="/profile"><span> <i class="nav-icon fas fa-user-alt"></i></span><span>Profile</span></a>
                 </li>
             </ul>
         </div>
@@ -83,9 +111,9 @@
         </div>
         </header>
         <main>
+        <h3 style="text-align:center;margin:20px auto">Form 3 resources</h3>
           <div class="row" style="margin:20px auto;">
-          <div class="col-md-4">
-    <h3 style="text-align:center;margin:auto">Form 3 resources</h3>
+          <div class="col-md-6">
     </div>
     <% if( user.role == 'admin'){ %>
     <div class="col-md-3">
@@ -97,7 +125,7 @@
     </div>
     <% } %>
            <div class="cards">
-                <a href="smaths"><div class="single-card">
+                <a href="/smaths/form3/smaths"><div class="single-card">
                     <div>
                     <h4>Maths</h4>
                     <h5>Resources</h5>
@@ -106,7 +134,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/maths icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="senglish">
+                <a href="/senglish/form3/senglish">
                 <div class="single-card">
                     <div>
                     <h4>English</h4>
@@ -116,7 +144,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/Englishi icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="skiswahili">
+                <a href="skiswahili/form3/skiswahili">
                 <div class="single-card">
                     <div>
                     <h4>Kiswahili</h4>
@@ -126,7 +154,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/kiswahili icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="scre">
+                <a href="/scre/form3/scre">
                 <div class="single-card">
                     <div>
                     <h4>CRE</h4>
@@ -139,7 +167,7 @@
             </div>
             </a>
              <div class="cards">
-             <a href="biology">
+             <a href="/biology/form3/biology">
                 <div class="single-card">
                     <div>
                     <h4>Biology</h4>
@@ -149,7 +177,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/biology icon.png"></span>
                     </div>
                 </div></a>
-                <a href="business">
+                <a href="/business/form3/business">
                 <div class="single-card">
                     <div>
                     <h4>Business</h4>
@@ -159,7 +187,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/business studies.png"></span>
                     </div>
                 </div></a>
-                <a href="chemistry">
+                <a href="/chemistry/form3/chemistry">
                 <div class="single-card">
                     <div>
                     <h4>Chemistry</h4>
@@ -169,7 +197,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/chem golden icon.png"></span>
                     </div>
                 </div></a>
-                <a href="physics">
+                <a href="/physics/form3/physics">
                 <div class="single-card">
                     <div>
                     <h4>Physics</h4>
@@ -181,7 +209,7 @@
                 </div></a>
             </div>
              <div class="cards">
-             <a href="geography">
+             <a href="/geography/form3/geography">
                 <div class="single-card">
                     <div>
                     <h4>Geography</h4>
@@ -191,7 +219,7 @@
                     <span><img style="height:80px;width:80px;" src="Images/geo icon.png"></span>
                     </div>
                 </div></a>
-                <a href="computer">
+                <a href="/computer/form3/computer">
                 <div class="single-card">
                     <div>
                     <h4>Computer</h4>
@@ -201,7 +229,7 @@
                     <span><img style="height:80px;width:80px;" src="/Images/computer studies.png"></span>
                     </div>
                 </div></a>
-                <a href="agriculture">
+                <a href="/agriculture/form3/agriculture">
                 <div class="single-card">
                     <div>
                     <h4>Agriculture</h4>
@@ -211,10 +239,10 @@
                     <span><img style="height:70px;width:70px;" src="/Images/agriculture icon.png"></span>
                     </div>
                 </div></a>
-                <a href="history">
+                <a href="/history/form3/history">
                 <div class="single-card">
                     <div>
-                     <h4>History</h4>
+                    <h4>History</h4>
                     <h5>Resources</h5>
                     </div>
                     <div>
