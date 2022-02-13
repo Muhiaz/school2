@@ -1,22 +1,44 @@
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const router  = express.Router();
 const mongoose = require('mongoose');
 const {ensureAuthenticated} = require("../config/auth.js");
 const Resource = require("../models/Resource.js");
 const Quizroom = require("../models/Quizroom.js");
+const request = require("request");
 const Quizreply = require("../models/Quizreply.js");
+const csrf = require('csurf');
+var bodyParser = require('body-parser')
 const db = mongoose.connect('mongodb://localhost:27017/test',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
 //login page
+const app = express();
+app.use(cookieParser());
+var csrfProtection = csrf({ cookie: true })
+var parseForm = bodyParser.urlencoded({ extended: false })
+
 router.get('/', (req,res)=>{
     res.render('welcome');
-})
+});
+router.get('/access_token',(req,res)=>{
+    let unirest = require('unirest');
+let sendr = unirest('GET', 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
+.headers({ 'Authorization': 'Bearer cFJZcjZ6anEwaThMMXp6d1FETUxwWkIzeVBDa2hNc2M6UmYyMkJmWm9nMHFRR2xWOQ==' })
+.send()
+.end(res => {
+    if (res.error) throw new Error(res.error);
+    console.log(res.raw_body);
+});
+        
+});
 //register page
 router.get('/register', (req,res)=>{
     res.render('register');
-})
-router.post('/addresource',(req,res)=>{
+});
+
+
+router.post('/addresource', parseForm,csrfProtection ,(req,res)=>{
    var newFile = new Resource({
     name: req.body.name,
     subject: req.body.subject,
@@ -351,10 +373,10 @@ user: req.user
 });
 })
 
-router.get('/pmaths',ensureAuthenticated,(req,res)=>{
+router.get('/pmaths',ensureAuthenticated,csrfProtection,(req,res)=>{
     Resource.find().then(result =>{
         console.log(result);
-        res.render('resources/pmaths',{user: req.user,resources : result})
+        res.render('resources/pmaths',{user: req.user,resources : result,csrfToken: req.csrfToken()})
     }).catch(error =>console.log(result));
     
 })

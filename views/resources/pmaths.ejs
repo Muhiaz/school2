@@ -162,7 +162,7 @@
              <div class="mymodal-header">Add Class 5 Resource</div>
              <hr style width="100%;background-color:#000;color:#000;">
              <div class="mymodal-body">
-             <form action="/addresource" method="POST">
+             <form enctype="multipart/form-data" action="/addresource" method="POST" >
              <div class="form-group">
              <label>Resource name</label>
              <input type="text" class="form-control" name="name">
@@ -203,7 +203,7 @@
              </div>
              <div class="form-group" name="file">
              <label>File</label>
-             <input type="file" class="form-control">
+             <input type="file" class="form-control" name="_csrf" value="">
              </div>
              </div>
              <div class="mymodal-footer">
