@@ -127,7 +127,7 @@
          <div class="row" style="margin:50px auto;">
     <% if( user.role == 'admin'){ %>
     <div class="col-md-3">
-    <button class="btn btn-primary" id="add-resource">Add Resource</button>
+    <button class="btn btn-primary" id="add-resource">Add Payment</button>
     </div>
     <div class="col-md-3">
     <button class="btn btn-warning">Payment report</button>
@@ -153,53 +153,43 @@
              <div class="form-modal" id="add-resource-modal">
              <div class="mymodal-content">
              <i class="fa fa-times closemodal" id="closemodal"></i>
-             <div class="mymodal-header">Add Class 5 Resource</div>
+             <div class="mymodal-header">Add  Payment</div>
              <hr style width="100%;background-color:#000;color:#000;">
              <div class="mymodal-body">
+             <div class="col-md-8">
              <form action="/addresource" method="POST">
              <div class="form-group">
-             <label>Resource name</label>
+             <div class="col-md-8">
+             <label>Transaction reference</label>
              <input type="text" class="form-control" name="name">
+             </div>
              </div>
              <div class="row">
              <div class="col-md-12">
-             <div class="col-md-6">
+             <div class="col-md-8">
              <div class="form-group">
-             <label>Level</label>
-             <select type="text" class="form-control" name="level">
-             <option>Primary</option>
-             <option>Secondary</option>
-             </select>
-             </div>
-             </div>
-             <div class="col-md-6">
-             <div class="form-group">
-             <label>Class</label>
-             <select type="text" class="form-control" name="rclass">
-             <option></option>
-             </select>
-             </div>
-             </div>
-             <div class="col-md-6">
-             <div class="form-group">
-             <label>Subject</label>
-             <select type="text" class="form-control" name="subject">
-             <option></option>
-             </select>
+             <label>Phone number</label>
+             <input type="text" class="form-control" name="level">
              </div>
              </div>
              </div>
              </div>
+             <div class="col-md-8">
              <div class="form-group">
              <label>Description</label>
              <textarea type="text" class="form-control" name="description" required="true">
              </textarea>
              </div>
+             </div>
+             <div class="col-md-8">
              <div class="form-group" name="file">
-             <label>File</label>
+             <label>Upload</label>
              <input type="file" class="form-control">
              </div>
              </div>
+             </div>
+             </div>
+             <div class="col-md-4"><img src="/Images/1200px-M-PESA_LOGO-01.svg.png" ></div>
              <div class="mymodal-footer">
              <div class="row">
              <div class="col-md-12">

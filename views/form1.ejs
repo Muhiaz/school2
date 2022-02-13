@@ -1,5 +1,5 @@
 
-   <input type="checkbox" id="nav-toggle">
+    <input type="checkbox" id="nav-toggle">
      <div class="sidebar">
         <div class="sidebar-brand">
                 <a href="#"><span></span><span><img style="width:90px;height:60px;margin:auto 10px;" src="/Images/schoolmet_icon-bg.png"></span><span style="color:yellow">Schoolmet</span></a>
@@ -121,8 +121,8 @@
         </div>
         </header>
         <main>
-         <h3 style="text-align:center;margin:30px auto">Form 1 resources</h3>
-         <div class="row" style="margin:20px auto;">
+        <h3 style="text-align:center;margin:20px auto">Form 1 resources</h3>
+          <div class="row" style="margin:20px auto;">
           <div class="col-md-6">
     </div>
     <% if( user.role == 'admin'){ %>
@@ -133,12 +133,9 @@
     <button class="btn btn-warning">Edit Resource</button>
     </div>
     </div>
-    </div>
-    </div>
-    <br>
     <% } %>
-            <div class="cards">
-                <a href="/smaths/form1/smaths"><div class="single-card">
+           <div class="cards">
+                <a href="/smaths/form2/smaths"><div class="single-card">
                     <div>
                     <h4>Maths</h4>
                     <h5></h5>
@@ -147,7 +144,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/maths icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="/senglish/form1/senglish">
+                <a href="/senglish/form2/senglish">
                 <div class="single-card">
                     <div>
                     <h4>English</h4>
@@ -157,7 +154,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/Englishi icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="skiswahili/form1/skiswahili">
+                <a href="skiswahili/form2/skiswahili">
                 <div class="single-card">
                     <div>
                     <h4>Kiswahili</h4>
@@ -167,7 +164,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/kiswahili icon golden.png"></span>
                     </div>
                 </div></a>
-                <a href="/scre/form1/scre">
+                <a href="/scre/form2/scre">
                 <div class="single-card">
                     <div>
                     <h4>CRE</h4>
@@ -180,7 +177,7 @@
             </div>
             </a>
              <div class="cards">
-             <a href="/biology/form1/biology">
+             <a href="/biology/form2/biology">
                 <div class="single-card">
                     <div>
                     <h4>Biology</h4>
@@ -190,7 +187,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/biology icon.png"></span>
                     </div>
                 </div></a>
-                <a href="/business/form1/business">
+                <a href="/business/form2/business">
                 <div class="single-card">
                     <div>
                     <h4>Business</h4>
@@ -200,7 +197,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/business studies.png"></span>
                     </div>
                 </div></a>
-                <a href="/chemistry/form1/chemistry">
+                <a href="/chemistry/form2/chemistry">
                 <div class="single-card">
                     <div>
                     <h4>Chemistry</h4>
@@ -210,7 +207,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/chem golden icon.png"></span>
                     </div>
                 </div></a>
-                <a href="/physics/form1/physics">
+                <a href="/physics/form2/physics">
                 <div class="single-card">
                     <div>
                     <h4>Physics</h4>
@@ -222,7 +219,7 @@
                 </div></a>
             </div>
              <div class="cards">
-             <a href="/geography/form1/geography">
+             <a href="/geography/form2/geography">
                 <div class="single-card">
                     <div>
                     <h4>Geography</h4>
@@ -232,7 +229,7 @@
                     <span><img style="height:80px;width:80px;" src="Images/geo icon.png"></span>
                     </div>
                 </div></a>
-                <a href="/computer/form1/computer">
+                <a href="/computer/form2/computer">
                 <div class="single-card">
                     <div>
                     <h4>Computer</h4>
@@ -242,7 +239,7 @@
                     <span><img style="height:80px;width:80px;" src="/Images/computer studies.png"></span>
                     </div>
                 </div></a>
-                <a href="/agriculture/form1/agriculture">
+                <a href="/agriculture/form2/agriculture">
                 <div class="single-card">
                     <div>
                     <h4>Agriculture</h4>
@@ -252,7 +249,7 @@
                     <span><img style="height:70px;width:70px;" src="/Images/agriculture icon.png"></span>
                     </div>
                 </div></a>
-                <a href="/history/form1/history">
+                <a href="/history/form2/history">
                 <div class="single-card">
                     <div>
                     <h4>History</h4>
@@ -266,10 +263,10 @@
             <div class="form-modal" id="add-resource-modal">
              <div class="mymodal-content">
              <i class="fa fa-times closemodal" id="closemodal"></i>
-             <div class="mymodal-header">Add Form 1 Resource</div>
+             <div class="mymodal-header">Add Form 2 Resource</div>
              <hr style width="100%;background-color:#000;color:#000;">
              <div class="mymodal-body">
-             <form action="/addresource" method="POST">
+              <form action="/addresource" method="POST">
              <div class="form-group">
              <label>Resource name</label>
              <input type="text" class="form-control" name="name">
@@ -302,7 +299,7 @@
              <label>Subject</label>
              <select type="text" class="form-control" name="subject">
              <option></option>
-             <option>Maths</option>
+            <option>Maths</option>
              <option>English</option>
               <option>Kiswahili</option>
                <option>Biology</option>
