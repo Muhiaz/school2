@@ -129,7 +129,7 @@
        <div class="row">
        <div class="col-md-6">
        <div class="profile-pic">
-       <i class="fa fa-user" style=""></i>
+       <img src="Images/avatar5.png">
        </div>
        </div>
        <div class="col-md-6">
@@ -139,8 +139,116 @@
        <p>Level: <%= user.level %></p>
        <p>County: <%= user.county %></p>
        </div>
+       <button class="pay" id="add-resource"><i class="fa fa-pen"></i>  Edit</button>
+       <button class="pay" id="add-resource1" style="background-color:red;"><i class="fa fa-LOCK"></i>  Change Password</button>
        </div>
        </div>
        </div>
+       <div class="form-modal" id="add-resource-modal">
+             <div class="mymodal-content">
+             <i class="fa fa-times closemodal" id="closemodal"></i>
+             <div class="mymodal-header">Edit Profile</div>
+             <hr style width="100%;background-color:#000;color:#000;">
+             <div class="mymodal-body">
+             <div class="col-md-8">
+             <form action="users/update" method="POST">
+             <div class="form-group">
+             <div class="col-md-8">
+             <label>Name</label>
+             <input type="text" class="form-control" name="name" value="<%= user.name %>">
+             </div>
+             </div>
+             <div class="row">
+             <div class="col-md-12">
+             <div class="col-md-8">
+             <div class="form-group">
+             <label>Email</label>
+             <input type="text" class="form-control" name="email" value="<%= user.email %>">
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="col-md-8">
+             <div class="form-group">
+             <label>Level</label>
+             <input type="text" class="form-control" name="level" required="true" value="<%= user.level %>">
+             </div>
+             </div>
+             <div class="col-md-8">
+             <div class="form-group" name="county">
+             <label>County</label>
+             <input type="text" class="form-control" name="county" value="<%= user.county %>">
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="col-md-4"><img src="Images/avatar5.png" ></div>
+             <div class="mymodal-footer">
+             <div class="row">
+             <div class="col-md-12">
+             <hr class="footerpartition">
+             <div class="col-md-12">
+             <button type="submit" class="btn btn-primary">Save</button>
+             </form>
+             </div>
+             </div>
+             </div>
+             </div>
+         </form>
+     </div>
+ </div>
+</div>
+</div>
+
+<div class="form-modal" id="add-resource-modal1">
+             <div class="mymodal-content">
+             <i class="fa fa-times closemodal" id="closemodal1"></i>
+             <div class="mymodal-header">Change Password</div>
+             <hr style width="100%;background-color:#000;color:#000;">
+             <div class="mymodal-body">
+             <div class="col-md-8">
+             <form action="users/update" method="POST">
+             <div class="form-group">
+             <div class="col-md-8">
+             <label>Current Password</label>
+             <input type="password" class="form-control" name="name" >
+             </div>
+             </div>
+             <div class="row">
+             <div class="col-md-12">
+             <div class="col-md-8">
+             <div class="form-group">
+             <label>New Password</label>
+             <input type="password" class="form-control" name="email" >
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="col-md-8">
+             <div class="form-group">
+             <label>Confirm Password</label>
+             <input type="password" class="form-control" name="level" required="true" >
+             </div>
+             </div>
+             </div>
+             </div>
+             <div class="col-md-4"><img src="Images/avatar5.png" ></div>
+             <div class="mymodal-footer">
+             <div class="row">
+             <div class="col-md-12">
+             <hr class="footerpartition">
+             <div class="col-md-12">
+             <button type="submit" class="btn btn-primary">Save</button>
+             </form>
+             </div>
+             </div>
+             </div>
+             </div>
+         </form>
+     </div>
+ </div>
+</div>
+</div>
+</div>
         </main>
     </div>

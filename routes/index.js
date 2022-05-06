@@ -327,6 +327,7 @@ res.render('profile',{
 user: req.user
 });
 })
+
 router.get('/grade1',ensureAuthenticated,(req,res)=>{
 res.render('grade1',{
 user: req.user

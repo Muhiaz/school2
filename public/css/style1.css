@@ -178,10 +178,9 @@ main{
     padding: 30px;
 }
 .profile-pic{
-    height: 60%;
+    height: 70%;
     width: 100%;
     box-shadow: 0 1px 4px rgba(146, 161, 176,0.45);
-    padding: 40px;
 }
 .profile-pic p{
     font-size: 22px;

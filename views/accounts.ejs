@@ -122,12 +122,19 @@
         </header>
         <main>
            <div class="col-md-12" style="margin:20px auto;">
-    <h3 style="text-align:center;margin:auto">My payment information</h3>
+           <div class="row">
+           <div class="col-md-6">
+           <h3 style="text-align:center;margin:auto">My payment information</h3>
+           </div>
+           <div class="col-md-6">
+           <button class="btn btn-primary" id="add-resource">Add Payment</button>
+           </div>
+           </div>
     </div><br>
          <div class="row" style="margin:50px auto;">
     <% if( user.role == 'admin'){ %>
     <div class="col-md-3">
-    <button class="btn btn-primary" id="add-resource">Add Payment</button>
+    
     </div>
     <div class="col-md-3">
     <button class="btn btn-warning">Payment report</button>
@@ -202,6 +209,13 @@
              </div>
              </div>
              </div>
+             </div>
+             </div>
+             <div class="mode">
+             <div class="mode-head">
+             <div class="col-md-12">Lipa na <img src="">
+             </div>
+             <div class="mode-body">
              </div>
              </div>
         </main>
