@@ -137,72 +137,105 @@
 
             </div>
         </div>
-        <table class="table table-bordered">
-            <thead style="background-color:yellow;">
-                <tr>
-                    <th>Transaction ID</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
+</div>
+</header>
+<main>
+    <div class="col-md-12" style="margin:20px auto;">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 style="text-align:center;margin:auto">My payment information</h3>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" id="add-resource">Add Payment</button>
+            </div>
+        </div>
+    </div><br>
+    <div class="row" style="margin:50px auto;">
+        <% if( user.role == 'admin'){ %>
+        <div class="col-md-3">
 
-            </tbody>
-        </table>
-        <div class="form-modal" id="add-resource-modal">
-            <div class="mymodal-content">
-                <i class="fa fa-times closemodal" id="closemodal"></i>
-                <div class="mymodal-header">Add Payment</div>
-                <hr style width="100%;background-color:#000;color:#000;">
-                <div class="mymodal-body">
-                    <div class="col-md-8">
-                        <form action="/addresource" method="POST">
-                            <div class="form-group">
-                                <div class="col-md-8">
-                                    <label>Transaction reference</label>
-                                    <input type="text" class="form-control" name="name">
-                                </div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-warning">Payment report</button>
+        </div>
+        <% } %>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead style="background-color:yellow;">
+            <tr>
+                <th>Transaction ID</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div class="form-modal" id="add-resource-modal">
+        <div class="mymodal-content">
+            <i class="fa fa-times closemodal" id="closemodal"></i>
+            <div class="mymodal-header">Add Payment</div>
+            <hr style width="100%;background-color:#000;color:#000;">
+            <div class="mymodal-body">
+                <div class="col-md-8">
+                    <form action="/addresource" method="POST">
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label>Transaction reference</label>
+                                <input type="text" class="form-control" name="name">
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label>Phone number</label>
-                                            <input type="text" class="form-control" name="level">
-                                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Phone number</label>
+                                        <input type="text" class="form-control" name="level">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea type="text" class="form-control" name="description" required="true">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea type="text" class="form-control" name="description" required="true">
              </textarea>
-                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="form-group" name="file">
-                                    <label>Upload</label>
-                                    <input type="file" class="form-control">
-                                </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group" name="file">
+                                <label>Upload</label>
+                                <input type="file" class="form-control">
                             </div>
-                    </div>
+                        </div>
                 </div>
-                <div class="col-md-4"><img src="/Images/1200px-M-PESA_LOGO-01.svg.png"></div>
-                <div class="mymodal-footer">
-                    <div class="row">
+            </div>
+            <div class="col-md-4"><img src="/Images/1200px-M-PESA_LOGO-01.svg.png"></div>
+            <div class="mymodal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr class="footerpartition">
                         <div class="col-md-12">
-                            <hr class="footerpartition">
-                            <div class="col-md-12">
-                                <button class="btn btn-default" id="closemodalbtn">Close</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                </form>
-                            </div>
+                            <button class="btn btn-default" id="closemodalbtn">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+    <div class="mode">
+        <div class="mode-head">
+            <div class="col-md-12">Lipa na <img src="">
+            </div>
+            <div class="mode-body">
+            </div>
+        </div>
+</main>
 </div>

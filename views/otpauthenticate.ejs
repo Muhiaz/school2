@@ -1,0 +1,44 @@
+<header class="header">
+  <div class="navigation bd-grid">
+    <div class="nav__logo">
+      <a href="#"><img src="/Images/schoolmet icon.png"></a>
+    </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="#features" class="nav__link">Features</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Virtual Classes</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Quiz room</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Mock tests</a></li>
+        <li class="nav__item"><a href="/blog" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="/users/login" class="nav__link">Login</a></li>
+        <li class="nav__item"><a href="/users/register" class="nav__link">Register</a></li>
+        <li class="nav__item"><a href="#contactsus" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav__toggle" id="nav-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
+<div class="page_body">
+<div class="register-form">
+<h1>OTP Authentication</h1>
+<%- include ('./partials/messages') %>
+
+  <div >
+    <label for="role">Enter the otp code sent to your phone</label>
+    <input class="form-control"
+      type=""
+      name="role"
+      style="border:dashed"
+    />
+  </div>
+  <br><br><br>
+  <a href="/users/login"><button class="btn btn-primary btn-block">
+    Submit
+  </button></a>
+
+</div>
+</div>
