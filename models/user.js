@@ -27,7 +27,11 @@ role :{
 date :{
     type : Date,
     default : Date.now
-}
+},
+classroom :{
+    type  : String,
+    required : true
+} 
 });
 const User= mongoose.model('User',UserSchema);
 

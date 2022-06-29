@@ -130,13 +130,14 @@
         </div>
         <% } %>
         <% for(let i=0; i<resources.length; i++){ 
-            if(resources[i]._id == myid){%>
+            if(resources[i]._id == myid && resources[i].reply_id != ''){%>
         <div class="quiz">
             <div class="quizroomheader"></div>
             <div class="quizroombody">
                 <%= resources[i].name %>
                 <%= resources[i].description %>
             </div>
+            <div class="col-md-12"><a href="/download/<%= resources[i].file %>"><%= resources[i].file %></a></div>
             <div class="quizroomfooter">
                 <button class="btn btn-primary reply">Reply</button>
                 <a href="#replies"><button class="btn btn-warning">View Answers</button></a>
@@ -144,6 +145,7 @@
                     <form method="POST" action="/postreply" id="quizform">
                         <textarea class="form-control" name="reply"></textarea><br>
                         <input class="form-control" name="quizid" value="<%= myid %>" type="hidden">
+                        <input class="form-control" name="replyid" value="" type="hidden">
                         <button class="btn btn-warning">Post</button>
                     </form>
                 </div>
@@ -153,34 +155,61 @@
         <div class="quizreplies" id="replies">
             <div class="quizroomheader">Answers Given</div>
             <% for(let i=0; i<replies.length; i++){ 
-            if(replies[i].quizid == myid){%>
-            <div class="quizreply">
-                <div class="quizroombody">
+            if(replies[i].quizid == myid && replies[i].reply_id == ''){
+             var scale_text = replies[i]._id; %>
+            <div class="quizreply" style="border:none;box-shadow:0px 1px 4px rgba(141,161,176,.5);margin-bottom:20px;">
+            
+            <div class="col-md-10" style="display:flex;justify-content:flex-start;align-items:center;">
+             <img src="/Images/avatar5.png"
+                            style="height:20px;width:20px;border-radius:50%;">
+                            <p style="margin-left:14px;"><strong>Enjoy learning <br><%= user.name %></strong></p>
+            </div>
+                <div class="quizroombody col-md-12">
                     <%= replies[i].reply %>
                 </div>
+ <div class="col-md-12"><h4 style="margin-left:30vw;">Replies</h4></div>
+                <% for(let i=0; i<replies.length; i++){ 
+            if(replies[i].quizid == myid && replies[i].reply_id == scale_text){%>
+            <div class="col-md-12" style="border:1px solid:#e4e4e4;padding:15px;">
+  <div class="col-md-2"></div>
+            <div class="col-md-10" style="display:flex;justify-content:flex-start;align-items:center;">
+             <img src="/Images/avatar5.png"
+                            style="height:20px;width:20px;border-radius:50%;">
+                            <p style="margin-left:14px;"><strong>Enjoy learning <br><%= user.name %></strong></p>
+            </div>
+             <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <%= replies[i].reply %>
+            </div>
+
+            </div>
+              <% }} %>
                 <div class="quizroomfooter">
                     <button class="btn btn-primary"><i class="fa fa-bookmark bookmark"></i></button>
                     <button class="btn btn-warning"><i class="fa fa-heart heart"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-share times"></i></button> <button
-                        class="btn btn-primary reply">Reply</button></div>
+                    <button class="btn btn-danger"><i class="fa fa-share times"></i></button>
+                    <a href="/replythis/<%= myid %>/<%= replies[i]._id %>"><button
+                        class="btn btn-primary reply" id="">Reply</button></a></div>
             </div>
             <% }} %>
         </div>
-        <div class="form-modal" id="add-resource-modal">
+        
+         <div class="form-modal add-resource-modal" id="add-resource-modal">
             <div class="mymodal-content">
                 <i class="fa fa-times closemodal" id="closemodal"></i>
-                <div class="mymodal-header">Add Resource</div>
+                <div class="mymodal-header">Ask a questionzs</div>
                 <hr style width="100%;background-color:#000;color:#000;">
                 <div class="mymodal-body">
                     <form action="/addquizroom" method="POST">
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <input type="hidden" class="form-control" name="name" value="Quiz">
                                         <label>Level</label>
                                         <select type="text" class="form-control" name="level">
-                                            <option>Primary</option>
-                                            <option>Secondary</option>
+                                            <option><%= user.level %></option>
                                         </select>
                                     </div>
                                 </div>
@@ -188,12 +217,7 @@
                                     <div class="form-group">
                                         <label>Class</label>
                                         <select type="text" class="form-control" name="rclass">
-                                            <option></option>
-                                            <option>Grade 4</option>
-                                            <option>Class 5</option>
-                                            <option>Class 6</option>
-                                            <option>Class 7</option>
-                                            <option>Class 8</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -201,13 +225,7 @@
                                     <div class="form-group">
                                         <label>Subject</label>
                                         <select type="text" class="form-control" name="subject">
-                                            <option></option>
-                                            <option>Maths</option>
-                                            <option>English</option>
-                                            <option>Kiswahili</option>
-                                            <option>Science</option>
-                                            <option>Social Studies</option>
-                                            <option>C.R.E</option>
+                                           
                                         </select>
                                     </div>
                                 </div>
@@ -215,7 +233,7 @@
                         </div>
                         <div class="form-group">
                             <label>Question</label>
-                            <textarea type="text" class="form-control" name="description" required="true">
+                            <textarea type="text" class="form-control" name="description">
              </textarea>
                         </div>
                         <div class="form-group" name="file">
@@ -228,8 +246,7 @@
                         <div class="col-md-12">
                             <hr class="footerpartition">
                             <div class="col-md-12">
-                                <button class="btn btn-default" id="closemodalbtn">Close</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Ask</button>
                                 </form>
                             </div>
                         </div>

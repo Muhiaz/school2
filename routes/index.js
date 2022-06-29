@@ -8,6 +8,9 @@ const Quizroom = require("../models/Quizroom.js");
 const request = require("request");
 const Quizreply = require("../models/Quizreply.js");
 const csrf = require('csurf');
+const path = require('path');
+const util = require('util');
+const multer = require('multer');
 var bodyParser = require('body-parser')
 const db = mongoose.connect('mongodb://localhost:27017/test',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
@@ -36,36 +39,82 @@ let sendr = unirest('GET', 'https://sandbox.safaricom.co.ke/oauth/v1/generate?gr
 router.get('/register', (req,res)=>{
     res.render('register');
 });
+router.get('/download/:id', function (req, res, next) {
+    var filePath = "./uploads/"; // Or format the path using the `id` rest param
+    var fileName = req.params.id; // The default name the browser will use
 
+    res.download('uploads/'+req.params.id);
+        
+});
+router.get('/uploads/:tagId', express.static('uploads'));
+router.post('/addresource', (req,res,next)=>{
+    var storage = multer.diskStorage({
+        destination:function(request,file,callback){
+            callback(null,"./uploads");
+        },
+        filename:function(request,file,callback){
+var temp_file_arr = file.originalname.split('.');
+var temp_file_name = temp_file_arr[0];
+var temp_file_extension = temp_file_arr[1];
+callback(null,temp_file_name + '_' + Date.now() + '.' + temp_file_extension);
 
-router.post('/addresource', parseForm,csrfProtection ,(req,res)=>{
-   var newFile = new Resource({
+        }
+    });
+    var upload = multer({storage:storage}).single('file');
+    upload(req,res,function(error){
+        if(error){
+            return res.end('Error uploading file');
+        }
+        else{
+        var newFile = new Resource({
     name: req.body.name,
     subject: req.body.subject,
     rclass: req.body.rclass,
     level : req.body.level,
     description : req.body.description,
-    file : req.body.file,
+    file : req.file.filename,
 
   });
-
-   newFile.save()
+        newFile.save()
                     .then((value)=>{
                         console.log(value);
                         req.flash('success_msg','You have added the Resource successfully!')
                     res.redirect('back');
                     }).catch(value=> console.log(value));
+    }
+    });
+   
+
+   
 
 
 })
-router.post('/addquizroom',(req,res)=>{
+router.post('/addquizroom',(req,res,next)=>{
+     var storage = multer.diskStorage({
+        destination:function(request,file,callback){
+            callback(null,"./uploads");
+        },
+        filename:function(request,file,callback){
+var temp_file_arr = file.originalname.split('.');
+var temp_file_name = temp_file_arr[0];
+var temp_file_extension = temp_file_arr[1];
+callback(null,temp_file_name + '_' + Date.now() + '.' + temp_file_extension);
+
+        }
+    });
+    var upload = multer({storage:storage}).single('file');
+    upload(req,res,function(error){
+        if(error){
+            return res.end('Error uploading file');
+        }
+        else{
    var newFile = new Quizroom({
     name: req.body.name,
     subject: req.body.subject,
     rclass: req.body.rclass,
     level : req.body.level,
     description : req.body.description,
-    file : req.body.file,
+    file : req.file.filename,
 
   });
 
@@ -76,14 +125,15 @@ router.post('/addquizroom',(req,res)=>{
                     res.redirect('back');
                     }).catch(value=> console.log(value));
 
-
+}
+});
 })
 
 router.post('/postreply',(req,res)=>{
    var newFile = new Quizreply({
     reply: req.body.reply,
     quizid: req.body.quizid,
-
+    reply_id:req.body.replyid
   });
 
    newFile.save()
@@ -92,6 +142,7 @@ router.post('/postreply',(req,res)=>{
                         req.flash('success_msg','You have added to the quiz room successfully!')
                     res.redirect('back');
                     }).catch(value=> console.log(value));
+                   res.redirect('quizroom/'+req.body.quizid);
 
 
 })
@@ -143,6 +194,15 @@ router.get('/quizrooms/:tagId/:subject',ensureAuthenticated,(req,res)=>{
         res.render('resources/quizroom',{user: req.user,resources : result,subject : current_subject,classs : current_id})
     }).catch(error =>console.log(result));
 })
+
+router.get('/replythis/:tagId/:subject',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param('tagId');
+    var current_subject = req.param('subject');
+    Quizreply.find().then(result =>{
+        console.log(result);
+        res.render('resources/individualreply',{user: req.user,resources : result,subject : current_subject,classs : current_id})
+    }).catch(error =>console.log(result));
+})
 router.get('/quizroom/:quizid',ensureAuthenticated,(req,res)=>{
     var current_id = req.params.quizid;
     
@@ -156,8 +216,15 @@ router.get('/quizroom/:quizid',ensureAuthenticated,(req,res)=>{
        
     }).catch(error =>console.log(result));
      
+});
+router.get('/resource/:tagId',ensureAuthenticated,(req,res)=>{
+    var current_id = req.param("tagId");
+    Resource.find().then(result =>{
+        console.log(result);
+        res.render('resources/individualresource',{user: req.user,resources : result,classs : current_id});
+    }).catch(error =>console.log(result));
+     
 })
-
 router.get('/pmaths/:tagId/:pmaths',ensureAuthenticated,(req,res)=>{
     var current_id = req.param("tagId");
     var current_subject = "Maths";
@@ -319,6 +386,16 @@ user: req.user
 })
 router.get('/youtube',ensureAuthenticated,(req,res)=>{
 res.render('youtube',{
+user: req.user
+});
+})
+router.get('/twitter',ensureAuthenticated,(req,res)=>{
+res.render('twitter',{
+user: req.user
+});
+})
+router.get('/linkedin',ensureAuthenticated,(req,res)=>{
+res.render('linkedin',{
 user: req.user
 });
 })

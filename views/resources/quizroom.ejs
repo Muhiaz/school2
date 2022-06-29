@@ -139,7 +139,8 @@
             <thead style="background-color:#ffba08;">
                 <tr>
                     <th>Question</th>
-                    <th>Answers provided</th>
+                   
+                     <th>Posting date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -149,10 +150,12 @@
             if(resources[i].subject == subject && resources[i].rclass == classs && resources[i].description != ''){%>
                 <tr>
                     <td><%= resources[i].description %></td>
+                    
+                     <td><%= resources[i].date %></td>
                     <td><a href="/quizroom/<%= resources[i]._id %>"><button
-                                style="background-color:#addef6;padding:5px;color:#fff;border:none;border-radius:02px;font-size:14px">View</button></a>
+                        class="btn btn-primary">View</button></a>
                         <a href="/quizroom/<%= resources[i]._id %>"><button
-                                style="background-color:#8bcefd;padding:5px;color:#000;border:none;border-radius:02px;font-size:14px">Reply</button></a>
+                                class="btn btn-warning">Reply</button></a>
                     </td>
                 </tr>
                 <% }} %>
@@ -164,7 +167,7 @@
                 <div class="mymodal-header">Ask a question</div>
                 <hr style width="100%;background-color:#000;color:#000;">
                 <div class="mymodal-body">
-                    <form action="/addquizroom" method="POST">
+                    <form action="/addquizroom" method="POST" enctype="multipart/form-data">
 
                         <div class="row">
                             <div class="col-md-12">
@@ -202,7 +205,7 @@
                         </div>
                         <div class="form-group" name="file">
                             <label>File</label>
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" name="file">
                         </div>
                 </div>
                 <div class="mymodal-footer">

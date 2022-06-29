@@ -24,7 +24,12 @@ rclass :{
 date :{
     type : Date,
     default : Date.now
-}
+},
+file :{
+    data: Buffer,
+    type: String,
+    required : true
+} ,
 });
 const Resource= mongoose.model('Resource',ResourceSchema);
 

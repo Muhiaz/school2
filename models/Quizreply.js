@@ -12,6 +12,14 @@ const QuizreplySchema  = new mongoose.Schema({
 date :{
     type : Date,
     default : Date.now
+},
+quiz_id:{
+  type:String,
+
+},
+reply_id:{
+  type:String,
+  
 }
 });
 const Quizreply= mongoose.model('Quizreply',QuizreplySchema);

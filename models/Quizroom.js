@@ -24,6 +24,10 @@ rclass :{
 date :{
     type : Date,
     default : Date.now
+},
+file :{
+    type:String,
+    required : true
 }
 });
 const Quizroom= mongoose.model('Quizroom',QuizroomSchema);

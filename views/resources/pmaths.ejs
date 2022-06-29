@@ -160,7 +160,7 @@
                 <tr>
                     <td><%= resources[i].name %></td>
                     <td><%= resources[i].description %></td>
-                    <td><button style="background-color:#addef6;padding:5px">View</button></td>
+                    <td><a href="/resource/<%= resources[i]._id %>"><button class="btn btn-success">View</button></a></td>
                 </tr>
                 <% }} %>
             </tbody>

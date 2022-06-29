@@ -27,6 +27,7 @@ router.post('/register', (req, res) => {
         level,
         role,
         password,
+        classroom,
         password2
     } = req.body;
     let errors = [];
@@ -132,6 +133,7 @@ router.post('/register', (req, res) => {
             level: level,
             role: role,
             password: password,
+            classroom: classroom
         });
         //hash password
         bcrypt.genSalt(10, (err, salt) =>

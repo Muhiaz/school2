@@ -36,36 +36,53 @@
                 <a href="/form4"><span> <i class="nav-icon fas fa-book-reader"></i></span><span>Form 4</span></a>
             </li>
             <% } else if(user.level == 'Secondary'){ %>
+            <% if(user.classroom == 'Form 1'){ %>
             <li>
                 <a href="/form1"><span> <i class="fas fa-book-reader"></i></span><span>Form 1</span></a>
             </li>
+            <% } %>
+            <% if(user.classroom == 'Form 2'){ %>
             <li>
                 <a href="/form2"><span> <i class="fas fa-book-reader"></i></span><span>Form 2</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Form 3'){ %>
             <li>
                 <a href="/form3"><span> <i class="fas fa-book-reader"></i></span><span>Form 3</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Form 4'){ %>
             <li>
                 <a href="/form4"><span> <i class="fas fa-book-reader"></i></span><span>Form 4</span></a>
             </li>
+             <% } %>
             <% } else if(user.level == 'Primary'){ %>
+            <% if(user.classroom == 'Grade 4'){ %>
             <li>
                 <a href="/grade4"><span> <i class="fas fa-book-reader"></i></span><span>Grade 4</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Class 5'){ %>
             <li>
                 <a href="/class5"><span> <i class="fas fa-book-reader"></i></span><span>Class 5</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Class 6'){ %>
             <li>
                 <a href="/class6"><span> <i class="fas fa-book-reader"></i></span><span>Class 6</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Class 7'){ %>
             <li>
                 <a href="/class7"><span> <i class="fas fa-book-reader"></i></span><span>Class 7</span></a>
             </li>
+             <% } %>
+             <% if(user.classroom == 'Class 8'){ %>
             <li>
                 <a href="/class8"><span> <i class="fas fa-book-reader"></i></span><span>Class 8</span></a>
             </li>
+             <% } %>
             <% } %>
-
             <li>
                 <a href="/accounts"><span><i class="nav-icon fas fas fa fa-tags"></i></span><span>My Payments</span></a>
             </li>
@@ -73,11 +90,11 @@
             <li>
                 <a href="/facebook"><span><i class="fab fa-facebook-f"></i></span><span>Facebook</span></a>
             </li>
-            <li>
-                <a href="/youtube"><span><i class="fab fa-twitter"></i></span><span>Twitter</span></a>
+             <li>
+                <a href="/twitter"><span><i class="fab fa-twitter"></i></span><span>Twitter</span></a>
             </li>
             <li>
-                <a href="/youtube"><span><i class="fab fa-linkedin"></i></span><span>Linkedin</span></a>
+                <a href="/youtube"><span><i class="fab fa-youtube"></i></span><span>Youtube</span></a>
             </li>
             <li>
                 <a href="/profile"><span> <i class="nav-icon fas fa-user-alt"></i></span><span> My Profile</span></a>
@@ -213,7 +230,7 @@
                                         <label>Level</label>
                                         <select type="text" class="form-control" name="level">
                                             <option>Primary</option>
-                                            <option>Secondary</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -221,12 +238,8 @@
                                     <div class="form-group">
                                         <label>Class</label>
                                         <select type="text" class="form-control" name="rclass">
-                                            <option></option>
-                                            <option>Grade 4</option>
-                                            <option>Class 5</option>
-                                            <option>Class 6</option>
-                                            <option>Class 7</option>
-                                            <option>Class 8</option>
+                                          
+                                            <option value="class6">Class 6</option>
                                         </select>
                                     </div>
                                 </div>

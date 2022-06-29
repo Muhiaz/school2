@@ -89,6 +89,8 @@ header {
     justify-content: space-between;
     padding: .5rem 2rem;
     align-items: center;
+    z-index: 10000;
+    background-color: #fff;
 }
 
 main {
@@ -294,4 +296,7 @@ main {
 
 .bookmark.active {
     color: red;
+}
+main .col-md-4{
+    margin-bottom: 20px;
 }
